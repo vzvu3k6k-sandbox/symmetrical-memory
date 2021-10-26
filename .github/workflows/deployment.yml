@@ -23,4 +23,3 @@ jobs:
           target_url: http://example.com/
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          environment: staging
