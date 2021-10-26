@@ -20,6 +20,6 @@ jobs:
         uses: chrnorm/deployment-status@releases/v1
         with:
           token: "${{ github.token }}"
-          target_url: http://example.com/
+          target_url: https://example.com/
           state: "success"
           deployment_id: ${{ steps.deployment.outputs.deployment_id }}
