@@ -1,0 +1,26 @@
+name: Deploy
+
+on: [push]
+
+jobs:
+  deploy:
+    name: Deploy my app
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: chrnorm/deployment-action@releases/v1
+        name: Create GitHub deployment
+        id: deployment
+        with:
+          token: "${{ github.token }}"
+          environment: staging
+      - name: Update deployment status
+        uses: chrnorm/deployment-status@releases/v1
+        with:
+          token: "${{ github.token }}"
+          target_url: http://example.com/
+          state: "success"
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          environment: staging
